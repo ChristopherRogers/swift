@@ -118,7 +118,7 @@ func bridgeNSNumberBackToSpecificType(object: ${ObjectType},
   _ = set as! Set<${Type}>
 %   end
 
-  _ = object is String // expected-warning{{always fails}}
+  _ = object is String // expected-warning{{always false}}
   _ = object as? String // expected-warning{{always fails}}
   _ = object as! String // expected-warning{{always fails}}
 }

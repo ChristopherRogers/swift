@@ -3630,7 +3630,8 @@ CheckedCastKind TypeChecker::typeCheckCheckedCast(Type fromType,
     if (optionalToOptionalCast)
       return CheckedCastKind::ValueCast;
 
-    diagnose(diagLoc, diag::downcast_to_unrelated, origFromType, origToType)
+    bool isIsTest = contextKind == CheckedCastContextKind::IsExpr;
+    diagnose(diagLoc, diag::downcast_to_unrelated, isIsTest, origFromType, origToType)
       .highlight(diagFromRange)
       .highlight(diagToRange);
 
@@ -3929,7 +3930,8 @@ CheckedCastKind TypeChecker::typeCheckCheckedCast(Type fromType,
     switch (contextKind) {
     case CheckedCastContextKind::ConditionalCast:
     case CheckedCastContextKind::ForcedCast:
-      diagnose(diagLoc, diag::downcast_to_unrelated, origFromType, origToType)
+      diagnose(diagLoc, diag::downcast_to_unrelated,
+               /*isIsTest=*/false, origFromType, origToType)
           .highlight(diagFromRange)
           .highlight(diagToRange);
 

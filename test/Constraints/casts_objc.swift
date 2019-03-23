@@ -24,7 +24,7 @@ func nsobject_as_class_cast<T>(_ x: NSObject, _: T) {
   let _ = x as! T.Type
   let _ = x as? T.Type
 
-  let _ = x is NotClass.Type  // expected-warning{{cast from 'NSObject' to unrelated type 'NotClass.Type' always fails}}
+  let _ = x is NotClass.Type  // expected-warning{{'is' test of 'NSObject' with unrelated type 'NotClass.Type' is always false}}
   let _ = x as! NotClass.Type // expected-warning{{cast from 'NSObject' to unrelated type 'NotClass.Type' always fails}}
   let _ = x as? NotClass.Type // expected-warning{{cast from 'NSObject' to unrelated type 'NotClass.Type' always fails}}
 }

@@ -30,7 +30,7 @@ func f1(i: Int?, ii: Int??, a: [Base]?, d: [Base : Base]?, de: Derived?) {
   _ = i..<1 is Int // expected-warning{{checking a value with optional type 'Int?' against dynamic type 'Int' succeeds whenever the value is non-nil; did you mean to use '!= nil'?}}{{7-7=(}}{{12-12=)}}{{13-19=!= nil}}
   _ = ii is Int
 
-  _ = i..<1 is Bool // expected-warning{{cast from 'Int?' to unrelated type 'Bool' always fails}}
+  _ = i..<1 is Bool // expected-warning{{'is' test of 'Int?' with unrelated type 'Bool' is always false}}
 }
 
 func implicitCastOfLiteralToOptional() {
